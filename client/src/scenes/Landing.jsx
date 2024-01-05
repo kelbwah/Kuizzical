@@ -7,7 +7,7 @@ import LandingBody from '../components/LandingBody';
 export default function Landing(){
     return (
         <React.Fragment>
-            <div className="flex flex-col w-screen h-screen bg-slate-50">
+            <div className="flex flex-col w-screen h-screen">
                 <Navbar />
                 <LandingBody />
             </div>
