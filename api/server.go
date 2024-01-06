@@ -15,6 +15,9 @@ func getRequestsHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	url := r.URL.Path
+	fmt.Println(r.Body)
+	fmt.Println(r.Header)
+	fmt.Println(r.URL)
 	switch url {
 	case "/":
 		fmt.Fprintf(w, "Kuizzical API Service\n\nRevert to /v1/help to see man page")

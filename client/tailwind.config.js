@@ -16,6 +16,9 @@ export default {
         "375": "375px",
         "400": "400px",
         "450": "450px",
+      },
+      colors: {
+        "link-water": "#dde2f8",
       }
     },
   },

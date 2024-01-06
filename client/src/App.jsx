@@ -13,7 +13,7 @@ import './index.css';
 
 export default function App() {
 
-  axios.defaults.baseURL = 'http://localhost:3001/api';
+  axios.defaults.baseURL = 'http://localhost:6969/v1';
   axios.defaults.withCredentials = true;
 
   const isAuth = Boolean(useSelector((state) => state.token));
@@ -27,7 +27,7 @@ export default function App() {
           element = { <Landing/> }
         />
         <Route
-          path = 'signup'
+          path = '/signup'
           element = { !isAuth ? <LoginAndRegister /> : <Quizzes /> }
         />
       </Routes>
