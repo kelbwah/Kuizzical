@@ -2,7 +2,6 @@ const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const jsonwebtoken = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
@@ -13,6 +12,7 @@ dotenv.config();
 
 // Declaring const variables
 const app = express();
+/*
 const jwtSecret = process.env.JWT_SECRET;
 const S3AccessKey = process.env.S3_ACCESS_KEY;
 const S3SecretAccessKey = process.env.S3_SECRET_ACCESS_KEY;
@@ -25,6 +25,7 @@ const s3 = new S3Client({
         secretAccessKey: S3SecretAccessKey,
     },
 });
+
 const upload = multer({
     storage: multerS3({
         s3: s3,
@@ -40,6 +41,7 @@ const upload = multer({
         }
     }),
 });
+*/
 
 // Setting up some CORS and JSON stuff for express
 app.use(cors({
@@ -49,10 +51,12 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
+/*
 // Routes
 app.use('/quiz', quizRoutes);
 app.use('/game', gameRoutes);
 app.use('/profile', profileRoutes);
 app.use('/auth', authRoutes);
+*/
 
-
+app.listen(3001, () => console.log("Server started at port 3001"));
