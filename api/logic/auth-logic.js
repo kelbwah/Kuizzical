@@ -1,33 +1,51 @@
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const User = require('../models/User.js');
-const logic = require('../logic');
+const db = require('../db');
+const queries = require('../queries');
+
+const logicToQueryCall = async (registerOrLogin, body) => {
+    try {
+        await db.connectToMongoose(); // Connect to mongoose 
+    } catch (err) {
+        return err; 
+    };
+
+    if (registerOrLogin === 'register') {
+        try {
+            const queryResult = await queries.auth.registerAuthQuery(body);
+
+            return queryResult;
+        } catch (err) {
+            throw err;
+        };
+    } else {
+        try {
+            const queryResult = await queries.auth.loginAuthQuery(body);
+
+            return queryResult;
+        } catch (err) {
+            throw err;
+        };
+    };
+};
 
 const registerLogic = async (body) => {
-    /*
-    const {
-        firstName,
-        lastName,
-        email,
-        username,
-        password,
-        age,
-        academicStatus,
-    } = body;  
-    */
-    console.log(`\n\nMade call to register logic with body: ${body}\n\n`)
+    try {
+        const user = await logicToQueryCall('register', body);    
 
+        return user;
+    } catch (err) {
+        throw err;
+    };
 };
 
 const loginLogic = async (body) => { 
-    /*
-    const {
-        email,
-        username,
-        password,
-    } = body;  
-    */
-    console.log(`\n\nMade call to login logic with body: ${body}\n\n`)
+    try {
+        const user = await logicToQueryCall('login', body);    
+
+        return user;
+    } catch (err) {
+        throw err;
+    };
 };
 
 module.exports = {
