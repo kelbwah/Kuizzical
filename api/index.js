@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const { S3Client } = require('@aws-sdk/client-s3');
+const routes = require('./routes/index.js');
 
 // Initiate .env files
 dotenv.config();
@@ -12,11 +13,9 @@ dotenv.config();
 // Declaring const variables
 const app = express();
 
-const jwtSecret = process.env.JWT_SECRET;
 const S3AccessKey = process.env.S3_ACCESS_KEY;
 const S3SecretAccessKey = process.env.S3_SECRET_ACCESS_KEY;
 const S3BucketName = process.env.S3_BUCKET_NAME;
-const bcryptSalt = bcrypt.genSaltSync(10);
 const s3 = new S3Client({
     region: 'us-east-1',
     credentials: {
@@ -25,7 +24,7 @@ const s3 = new S3Client({
     },
 });
 
-// Uploading to aws
+// Uploading to aws (MIGHT PUT THIS IN QUIZ-LOGIC)
 const upload = multer({
     storage: multerS3({
         s3: s3,
@@ -38,7 +37,7 @@ const upload = multer({
             const fileName = Date.now().toString() + '-' + file.originalname;
             profilePath=`https://${S3BucketName}.s3.amazonaws.com/${fileName}`;
             cb(null, fileName);
-        }
+        },
     }),
 });
 
@@ -50,14 +49,11 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-/*
 // Routes
-app.use('/quiz', quizRoutes);
-app.use('/game', gameRoutes);
-app.use('/profile', profileRoutes);
-app.use('/auth', authRoutes);
-*/
+app.use('/auth', routes.authRouter);
+//app.use('/quiz', quizRoutes);
+//app.use('/game', gameRoutes);
+//app.use('/profile', profileRoutes);
 
 // Starting the server at given port
 app.listen(process.env.API_PORT, () => console.log(`Server started at port ${process.env.API_PORT}`));
-
