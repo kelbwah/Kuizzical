@@ -1,7 +1,12 @@
 const express = require('express');
-const router = express.Router();
+const { verifyToken } = require('../middleware/index.js');
 const controllers = require('../controllers');
+const authRouter = express.Router();
 
-// TODO: Need to use the router to add in certain endpoints and then route it: router -> controller -> logic -> queries
+authRouter.post('/register', controllers.auth.register);
+authRouter.post('/login', controllers.auth.login);
+authRouter.post('/test', controllers.auth.test);
 
-export default router;
+module.exports = {
+    authRouter,
+};
