@@ -3,13 +3,13 @@
 # Install and/or update dependencies
 echo "Installing/updating packackes and dependencies for server and web client...\n"
 
-# Starting the api server
-echo "Starting the api server...\n"
-cd api
-nodemon index.js &
-
 # Starting front-end client
 echo "Starting front-end...\n"
-cd ../client
-npm run dev
+cd client
+npm run dev &
+
+# Starting the api server
+echo "Starting the api server...\n"
+cd ../api
+nodemon index.js 
 
