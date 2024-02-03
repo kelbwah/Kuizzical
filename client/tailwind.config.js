@@ -7,7 +7,11 @@ export default {
     './src/components/*.{jsx, js}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'shark': '#333436',
+      },
+    },
   },
   plugins: [],
 };

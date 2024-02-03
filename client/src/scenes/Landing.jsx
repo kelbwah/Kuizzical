@@ -1,10 +1,20 @@
 import React from 'react';
 import Navbar from '../components/Navbar.jsx';
+import { RightNavbarActions, LeftNavbarActions } from '../components/NavbarActions.jsx';
 
-export default function Landing() {
+const Landing = () => {
+
     return (
-        <React.Fragment>
-            <Navbar/> 
-        </React.Fragment>
+        <div className='w-screen h-screen bg-shark'>
+            <Navbar actions={ 
+                    {
+                        leftActions: <LeftNavbarActions />, 
+                        rightActions: <RightNavbarActions />,
+                    } 
+                }
+            /> 
+        </div>
     );
 };
+
+export default Landing;
