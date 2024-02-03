@@ -10,6 +10,7 @@ export default {
     extend: {
       colors: {
         'shark': '#333436',
+        'sealBrown': '#253746',
       },
     },
   },

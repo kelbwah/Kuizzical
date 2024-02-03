@@ -1,0 +1,22 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import { FaGithub } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
+
+const Footer = (props) => {
+    return (
+        <footer className='pt-8 pb-12'>Footer</footer>
+    );
+};
+
+Footer.defaultProps = {
+
+};
+
+Footer.propTypes = {
+
+};
+
+
+export default Footer;
