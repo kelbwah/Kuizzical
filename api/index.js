@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const { S3Client } = require('@aws-sdk/client-s3');
@@ -44,13 +45,16 @@ const upload = multer({
 // Setting up some CORS and JSON stuff for express
 app.use(cors({
     credentials: true,
-    origin: process.env.VITE_API_BASE_URL,
+    origin: process.env.VITE_CLIENT_BASE_URL,
 }));
 app.use(express.json());
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 // Routes
-app.use('/auth', routes.authRouter);
+app.use('/api/auth', routes.authRouter);
 //app.use('/quiz', quizRoutes);
 //app.use('/game', gameRoutes);
 //app.use('/profile', profileRoutes);

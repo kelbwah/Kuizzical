@@ -5,6 +5,7 @@ export default {
     './src/*.{jsx, js}',
     './src/scenes/*.{jsx, js}',
     './src/components/*.{jsx, js}',
+    './node_modules/flowbite-react/lib/esm/**/*.js',
   ],
   theme: {
     extend: {
@@ -14,6 +15,8 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin'),
+  ],
 };
 

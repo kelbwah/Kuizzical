@@ -1,27 +1,37 @@
-//import { useEffect, useState } from 'react';
-//import { useSelector } from 'react-redux';
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import axios from 'axios';
-import Landing from './scenes/Landing.jsx';
+import SceneTemplate from './scenes/SceneTemplate.jsx';
 
 
 function App() {
+    axios.defaults.baseURL = 'http://localhost:6969/api';
+    axios.defaults.withCredentials = true;
 
-  axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
-  axios.defaults.withCredentials = true;
- 
-  return (
-    <BrowserRouter basename="/">
-      <Routes>
-        <Route 
-          path="/" 
-          element={
-            <Landing />
-          }>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  )
+    return (
+        <BrowserRouter basename="/">
+            <Routes>
+                <Route 
+                    exact
+                    path="/" 
+                    element={
+                        <SceneTemplate documentTitle='Home' sceneType='Landing' />
+                    }
+                />
+                <Route 
+                    path="/profile" 
+                    element={
+                        <SceneTemplate documentTitle='Profile' sceneType='Profile' />
+                    }
+                />
+                <Route 
+                    path="/info" 
+                    element={
+                        <SceneTemplate documentTitle='Info' sceneType='Info' />
+                    }
+                />
+            </Routes>
+        </BrowserRouter>
+    )
 }
 
 export default App;

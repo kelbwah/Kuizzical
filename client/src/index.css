@@ -1,3 +1,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    @variants responsive {
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+      }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .fade-in {
+        animation: fadeIn 1.3s ease-in-out backwards;
+    }
+
+    .fade-out {
+        animation: fadeOut 1.3s ease-in-out forwards;
+    }
+
+    .fade-in-fast {
+        animation: fadeIn 0.35s ease-in-out forwards;
+    }
+
+    .fade-in-faster {
+        animation: fadeIn 0.25s ease-in-out forwards;
+    }
+}
+

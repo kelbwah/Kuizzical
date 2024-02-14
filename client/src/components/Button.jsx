@@ -1,12 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import { Tooltip } from 'flowbite-react';
+
 
 const Button = (props) => {
+
+    const navigate = useNavigate();
+
+    const navigateTo = (url) => {
+        if (url.length > 0) {    
+            navigate(url);
+        };
+    };
+
     return (
-        <button title={props.title} className={`${props.styles} focus:outline-none`}>
-            { props.icon }
-            <span className={props.labelStyles}>{props.label}</span>
-        </button>
+        <Tooltip content={props.title}>
+            <div className='flex items-center justify-center h-full'>
+                <button onClick={() => navigateTo(props.url)} title={props.title} className={`${props.styles} focus:outline-none`}>
+                    { props.icon }
+                    <span className={props.labelStyles}>{props.label}</span>
+                </button>
+            </div>
+        </Tooltip>
     );
 };
 
@@ -16,6 +32,7 @@ Button.defaultProps = {
     labelStyles: '',
     styles: '',
     title: '',
+    url: '',
 };
 
 Button.propTypes = {
@@ -24,6 +41,7 @@ Button.propTypes = {
     title: PropTypes.string,
     labelStyles: PropTypes.string,
     styles: PropTypes.string,
+    url: PropTypes.string,
 };
 
 export default Button;

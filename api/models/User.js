@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema(
         },
         academicStatus: {
             type: String,
-            enum: ['Elementary', 'Middle School', 'High School', 'Undergraduate', 'Graduate', 'PhD', 'Other'],
+            enum: ['Elementary', 'Middle School', 'High School', 'Undergraduate', 'Graduate', 'Other'],
             required: true,
         }, 
     },
