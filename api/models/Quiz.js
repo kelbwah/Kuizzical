@@ -1,9 +1,17 @@
 const mongoose = require('mongoose');
 
+const termAndDefinitionSchema = new mongoose.Schema({
+    term: String,
+    definition: String,
+    isTermImage: Boolean,
+    isDefinitionImage: Boolean,
+}, { _id: false });
+
 const QuizSchema = new mongoose.Schema(
     {
         author: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
             required: true,
         },
         title: {
@@ -14,10 +22,16 @@ const QuizSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        termsAndDefinitions: [termAndDefinitionSchema],
+        visibility: {
+            type: String,
+            enum: ['Private', 'Public', 'Invite-Only'],
+            requried: true,
+        },
     },
     { timestamps: true },
 );
 
-const User = mongoose.model('User', UserSchema);
+const Quiz = mongoose.model('Quiz', QuizSchema);
 
-module.exports = User;
+module.exports = Quiz;

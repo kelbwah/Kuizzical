@@ -1,5 +1,4 @@
-const userCreationErrorGenerator = (errorCode, keyValue) => {
-
+const objectCreationErrorGenerator = (errorCode, keyValue) => {
     const upperCaseKey = keyValue !== null || keyValue !== undefined ? (Object.keys(keyValue)[0][0].toUpperCase() + Object.keys(keyValue)[0].slice(1)) : null;
 
     switch (errorCode) {
@@ -16,4 +15,4 @@ const userCreationErrorGenerator = (errorCode, keyValue) => {
     };
 };
 
-module.exports = userCreationErrorGenerator;
+module.exports = objectCreationErrorGenerator;

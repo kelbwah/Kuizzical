@@ -17,7 +17,7 @@ const infoIcon = <IoMdInformationCircleOutline className={iconStyles()} />;
 
 export const LeftNavbarActions = () => {
     return (
-        <Button title={'Quizzes'} icon={quizIcon} />
+        <Button url={'/quizzes'} title={'Quizzes'} icon={quizIcon} />
     );
 
 };

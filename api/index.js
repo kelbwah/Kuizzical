@@ -50,12 +50,13 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: true,
 }));
 
 // Routes
 app.use('/api/auth', routes.authRouter);
-//app.use('/quiz', quizRoutes);
+app.use('/api/quiz', routes.quizRouter);
+app.use('/api/s3', routes.s3Router);
 //app.use('/game', gameRoutes);
 //app.use('/profile', profileRoutes);
 

@@ -8,6 +8,7 @@ import Footer from '../components/Footer.jsx';
 import LandingBody from '../components/body-components/LandingBody.jsx'; 
 import ProfileBody from '../components/body-components/ProfileBody.jsx';
 import InfoBody from '../components/body-components/InfoBody';
+import QuizzesPreviewBody from '../components/body-components/QuizzesPreviewBody.jsx';
 
 import { RightNavbarActions, LeftNavbarActions } from '../components/NavbarActions.jsx';
 
@@ -15,6 +16,7 @@ const sceneTypes = {
     'Landing': <LandingBody />,
     'Profile': <ProfileBody />,
     'Info': <InfoBody />,
+    'QuizzesPreview': <QuizzesPreviewBody />,
 };
 
 const SceneTemplate = (props) => { 
@@ -32,7 +34,7 @@ const SceneTemplate = (props) => {
             {success !== null && (
                 <CustomToast message={success} type={'success_toast'}/>
             )}
-            <main className='relative flex flex-col items-center w-screen min-h-screen text-gray-300 fade-in-fast'>
+            <div className='relative flex flex-col items-center w-screen min-h-screen text-gray-300 fade-in-fast'>
                 <Navbar 
                     actions={ 
                         {
@@ -44,7 +46,7 @@ const SceneTemplate = (props) => {
                 /> 
                 <BodyComponent innerDivComponents={sceneTypes[props.sceneType]} />
                 <Footer />
-            </main>
+            </div>
         </>
     );
 };

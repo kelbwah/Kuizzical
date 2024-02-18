@@ -8,25 +8,31 @@ function App() {
     axios.defaults.withCredentials = true;
 
     return (
-        <BrowserRouter basename="/">
+        <BrowserRouter basename='/'>
             <Routes>
                 <Route 
                     exact
-                    path="/" 
+                    path='/' 
                     element={
                         <SceneTemplate documentTitle='Home' sceneType='Landing' />
                     }
                 />
                 <Route 
-                    path="/profile" 
+                    path='/profile' 
                     element={
                         <SceneTemplate documentTitle='Profile' sceneType='Profile' />
                     }
                 />
                 <Route 
-                    path="/info" 
+                    path='/info'
                     element={
                         <SceneTemplate documentTitle='Info' sceneType='Info' />
+                    }
+                />
+                <Route
+                    path='/quizzes'
+                    element={
+                        <SceneTemplate documentTitle='Quizzes' sceneType='QuizzesPreview' />       
                     }
                 />
             </Routes>
