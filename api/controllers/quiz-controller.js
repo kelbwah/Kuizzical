@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// DONE
 const createQuiz = async (req, res) => {
     try {
         const logicResult = await logic.quiz.createQuizLogic(req.body); 
@@ -17,7 +16,6 @@ const createQuiz = async (req, res) => {
     };
 };
 
-// DONE
 const deleteQuiz = async (req, res) => {
     try {
         const logicResult = await logic.quiz.deleteQuizLogic(req); 
@@ -43,7 +41,6 @@ const updateQuiz = async (req, res) => {
     };
 };
 
-// DONE
 const getAllQuizzes = async (req, res) => {
     try {
         const logicResult = await logic.quiz.getAllQuizzesLogic(); 
@@ -56,7 +53,6 @@ const getAllQuizzes = async (req, res) => {
     };
 };
 
-// DONE
 const getQuiz = async (req, res) => {
     try {
         const { quizId } = req.params;
@@ -69,8 +65,6 @@ const getQuiz = async (req, res) => {
         return res.status(500).json({ error: err.message });
     };
 };
-
-
 
 module.exports = {
     createQuiz,
