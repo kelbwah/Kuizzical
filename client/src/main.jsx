@@ -4,7 +4,8 @@ import App from './App';
 import './index.css';
 import UserState from './states/UserState.js';
 import ErrorState from './states/ErrorState.js';
-import SuccessState from './states/SuccessState';
+import SuccessState from './states/SuccessState.js';
+import QuizState from './states/QuizState.js';
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import {
@@ -24,6 +25,7 @@ const rootReducer = {
     user: persistReducer({key: 'user', storage}, UserState),
     error: ErrorState,
     success: SuccessState,
+    quiz: QuizState,
 };
 
 const store = configureStore({

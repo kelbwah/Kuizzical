@@ -48,10 +48,10 @@ const updateQuizLogic = async (req) => {
     };
 };
 
-const getAllQuizzesLogic = async () => {
+const getAllQuizzesLogic = async (page) => {
     try {
         await db.connectToMongoose(); 
-        const queryResult = await queries.quiz.getAllQuizzesQuery();
+        const queryResult = await queries.quiz.getAllQuizzesQuery(page);
 
         return queryResult; 
     } catch (err) {

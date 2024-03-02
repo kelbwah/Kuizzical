@@ -3,7 +3,7 @@ import React from 'react';
 const InfoBody = () => {
     return (
         <>
-            <div className='flex flex-col gap-12 items-center fade-in-fast'>
+            <div className='flex flex-col gap-12 items-center fade-in-fast '>
                 <div className='flex flex-col gap-3'>
                     <h1 className='font-black lg:text-4xl md:text-4xl text-3xl pb-2 hover:text-yellow-300 ease-in-out duration-300'>What is Kuizzical?</h1>
                     <p className='lg:text-sm md:text-sm text-xs font-medium'>

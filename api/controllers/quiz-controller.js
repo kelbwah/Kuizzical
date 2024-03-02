@@ -43,7 +43,8 @@ const updateQuiz = async (req, res) => {
 
 const getAllQuizzes = async (req, res) => {
     try {
-        const logicResult = await logic.quiz.getAllQuizzesLogic(); 
+        const { page } = req.query;
+        const logicResult = await logic.quiz.getAllQuizzesLogic(page); 
 
         await db.disconnectFromMongoose();
 

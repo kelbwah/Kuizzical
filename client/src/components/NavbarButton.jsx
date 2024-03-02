@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Tooltip } from 'flowbite-react';
 
 
-const Button = (props) => {
+const NavbarButton = (props) => {
 
     const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const Button = (props) => {
     );
 };
 
-Button.defaultProps = {
+NavbarButton.defaultProps = {
     icon: null,
     label: '',
     labelStyles: '',
@@ -35,7 +35,7 @@ Button.defaultProps = {
     url: '',
 };
 
-Button.propTypes = {
+NavbarButton.propTypes = {
     icon: PropTypes.node,
     label: PropTypes.string,
     title: PropTypes.string,
@@ -44,4 +44,4 @@ Button.propTypes = {
     url: PropTypes.string,
 };
 
-export default Button;
+export default NavbarButton;

@@ -56,9 +56,9 @@ app.use(bodyParser.urlencoded({
 // Routes
 app.use('/api/auth', routes.authRouter);
 app.use('/api/quiz', routes.quizRouter);
+app.use('/api/profile', routes.profileRouter);
 app.use('/api/s3', routes.s3Router);
 //app.use('/game', gameRoutes);
-//app.use('/profile', profileRoutes);
 
 // Starting the server at given port
 app.listen(process.env.API_PORT, () => console.log(`Server started at port ${process.env.API_PORT}`));

@@ -62,7 +62,7 @@ const updateQuizQuery = async (body) => {
         newKeysAndValues,
     } = body;
 
-    try{
+    try {
         const isUserAuthor = await Quiz.findOne({_id: quizId, author: userId});
         if (!isUserAuthor) throw new Error("Quiz ID doesn't exist or user is not author of quiz."); 
         
@@ -77,9 +77,26 @@ const updateQuizQuery = async (body) => {
     };
 };
 
-const getAllQuizzesQuery = async () => {
-    try{
-        const allQuizzes = await Quiz.find({});
+const getAllQuizzesQuery = async (page) => {
+    try {
+        const allQuizzes = await Quiz.aggregate([
+          { $skip: 12 * page },
+          { $limit: 12 },
+          {
+            $lookup: {
+              from: "users", 
+              localField: "author",
+              foreignField: "_id",
+              as: "authorInfo",
+            }
+          },
+          {
+            $set: {
+              author: {
+                $arrayElemAt: ["$authorInfo.username", 0], 
+              }
+            }
+          }]);
 
         return allQuizzes;
     } catch (err) {
@@ -88,7 +105,7 @@ const getAllQuizzesQuery = async () => {
 };
 
 const getQuizQuery = async (quizId) => {
-    try{
+    try {
         const quiz = await Quiz.findById(quizId);
         if (!quiz) throw new Error('Quiz not found');
 

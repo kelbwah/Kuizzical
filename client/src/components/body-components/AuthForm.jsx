@@ -3,11 +3,10 @@ import { useDispatch } from 'react-redux';
 import { Register, Login } from '../../services/AuthServiceWrapper';
 import { CSSTransition } from 'react-transition-group';
 import { Spinner, Tooltip } from 'flowbite-react';
-import CustomToast from '../CustomToast';
 import { transformAndValidateBody } from '../../utils/ProfileUtils';
 import { setLogin } from '../../states/UserState';
 import { removeError, setError } from '../../states/ErrorState';
-import { removeSuccess, setSuccess } from '../../states/SuccessState';
+//import { removeSuccess, setSuccess } from '../../states/SuccessState';
 
 const AuthForm = () => { 
     const dispatch = useDispatch();
@@ -59,8 +58,7 @@ const AuthForm = () => {
                     token: token,
                 })
             )
-        } catch (err) { 
-            console.log(err);
+        } catch (err) {  
             dispatch(
                 setError({
                     error: err.response.data.error !== null ? err.response.data.error : err.response, 

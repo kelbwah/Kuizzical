@@ -15,7 +15,7 @@ authRouter.post('/login', controllers.auth.login);
 
 /* Quiz Routes */
 
-/* https://localhost:6969/api/quiz GET */
+/* https://localhost:6969/api/quiz?currPage=<currPage> GET */
 quizRouter.get('', controllers.quiz.getAllQuizzes); 
 
 
@@ -63,11 +63,9 @@ s3Router.delete('', verifyToken, controllers.s3.s3Delete);
 /////////////////////////////////////////////////////////////
 
 /* Profile Routes */
-profileRouter.post('');
-profileRouter.patch('');
-profileRouter.delete('');
-profileRouter.get('');
-
+profileRouter.get('/:userId', controllers.profile.getUser);
+profileRouter.patch('/:userId', verifyToken, controllers.profile.updateUser);
+profileRouter.delete('/:userId', verifyToken, controllers.profile.deleteUser);
 
 module.exports = {
     authRouter,

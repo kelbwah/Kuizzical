@@ -16,10 +16,14 @@ const QuizSchema = new mongoose.Schema(
         },
         title: {
             type: String,
+            minLength: 1,
+            maxLength: 50, 
             required: true,
         },
         description: {
             type: String,
+            minLength: 1,
+            maxLength: 75, 
             required: true,
         },
         termsAndDefinitions: [termAndDefinitionSchema],

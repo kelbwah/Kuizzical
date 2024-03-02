@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button';
+import NavbarButton from './NavbarButton';
 
 import { FaRegUser } from 'react-icons/fa';
 import { MdOutlineQuiz } from 'react-icons/md';
@@ -17,7 +17,7 @@ const infoIcon = <IoMdInformationCircleOutline className={iconStyles()} />;
 
 export const LeftNavbarActions = () => {
     return (
-        <Button url={'/quizzes'} title={'Quizzes'} icon={quizIcon} />
+        <NavbarButton url={'/quizzes'} title={'Quizzes'} icon={quizIcon} />
     );
 
 };
@@ -30,8 +30,8 @@ export const RightNavbarActions = () => {
     return (
 
         <div className='flex gap-7'> 
-            <Button url={'/info'} title={'Info'} icon={infoIcon} />
-            <Button url={'/profile'} title={'Profile'} icon={userIcon} />
+            <NavbarButton url={'/info'} title={'Info'} icon={infoIcon} />
+            <NavbarButton url={'/profile'} title={'Profile'} icon={userIcon} />
         </div>
     );
 };
