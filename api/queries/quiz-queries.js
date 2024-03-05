@@ -88,15 +88,24 @@ const getAllQuizzesQuery = async (page) => {
               localField: "author",
               foreignField: "_id",
               as: "authorInfo",
+              pipeline: [
+                {
+                  $project: {
+                    username: 1,
+                    _id: 1
+                  }
+                }
+              ],
             }
           },
           {
             $set: {
               author: {
                 $arrayElemAt: ["$authorInfo.username", 0], 
-              }
+              },
             }
-          }]);
+          },
+        ]);
 
         return allQuizzes;
     } catch (err) {
