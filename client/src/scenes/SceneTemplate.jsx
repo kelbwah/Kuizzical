@@ -9,6 +9,9 @@ import LandingBody from '../components/body-components/LandingBody.jsx';
 import ProfileBody from '../components/body-components/ProfileBody.jsx';
 import InfoBody from '../components/body-components/InfoBody';
 import QuizzesPreviewBody from '../components/body-components/QuizzesPreviewBody.jsx';
+import SpecificQuizBody from '../components/body-components/SpecificQuizBody.jsx';
+import Modal from '../components/Modal.jsx';
+import QuizFilter from '../components/QuizFilter.jsx';
 
 import { RightNavbarActions, LeftNavbarActions } from '../components/NavbarActions.jsx';
 
@@ -17,22 +20,29 @@ const sceneTypes = {
     'Profile': <ProfileBody />,
     'Info': <InfoBody />,
     'QuizzesPreview': <QuizzesPreviewBody />,
+    'SpecificQuiz': <SpecificQuizBody />,
+};
+
+const modalTypes = {
+    'Filter': <QuizFilter />,
 };
 
 const SceneTemplate = (props) => { 
     document.title = props.documentTitle;
-
-
     const error = useSelector((state) => state.error.error);    
     const success = useSelector((state) => state.success.success);
+    const modal = useSelector((state) => state.modal);
 
     return (
         <>
             {error !== null && (
-                <CustomToast message={error} type={'error_toast'}/>
+                <CustomToast message={error} type={ 'error_toast' }/>
             )}
             {success !== null && (
-                <CustomToast message={success} type={'success_toast'}/>
+                <CustomToast message={success} type={ 'success_toast' }/>
+            )}
+            {modal.isModalOpened !== false && (
+                <Modal innerDivComponents={ modalTypes[modal.modalType] }/>
             )}
             <div className='relative flex flex-col items-center w-screen min-h-screen text-gray-300 fade-in-fast'>
                 <Navbar 
@@ -42,9 +52,8 @@ const SceneTemplate = (props) => {
                             rightActions: <RightNavbarActions />,
                         } 
                     }
-                    extraNavbarStyles={''}
                 /> 
-                <BodyComponent innerDivComponents={sceneTypes[props.sceneType]} />
+                <BodyComponent innerDivComponents={ sceneTypes[props.sceneType] } />
                 <Footer />
             </div>
         </>

@@ -6,6 +6,7 @@ import UserState from './states/UserState.js';
 import ErrorState from './states/ErrorState.js';
 import SuccessState from './states/SuccessState.js';
 import QuizState from './states/QuizState.js';
+import ModalState from './states/ModalState.js';
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import {
@@ -26,6 +27,7 @@ const rootReducer = {
     error: ErrorState,
     success: SuccessState,
     quiz: QuizState,
+    modal: ModalState,
 };
 
 const store = configureStore({

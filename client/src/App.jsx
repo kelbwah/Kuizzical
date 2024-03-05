@@ -35,6 +35,12 @@ function App() {
                         <SceneTemplate documentTitle='Quizzes' sceneType='QuizzesPreview' />       
                     }
                 />
+                <Route
+                    path='/quiz/:quizId'
+                    element={
+                        <SceneTemplate documentTitle='Quiz' sceneType='SpecificQuiz' />
+                    }
+                />
             </Routes>
         </BrowserRouter>
     )

@@ -49,6 +49,10 @@
     .fade-in-faster {
         animation: fadeIn 0.25s ease-in-out forwards;
     }
+
+    .fade-in-fastest {
+        animation: fadeIn 0.15s ease-in-out forwards;
+    }
     
     .quiz-preview-grid {
         display: grid;

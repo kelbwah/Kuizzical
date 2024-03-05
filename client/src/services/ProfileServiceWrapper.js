@@ -5,7 +5,7 @@ import { pseudoAPICall } from "../utils/DebounceUtils";
 export const getUserById = async (userId) => {
     await pseudoAPICall(500);
     const { user } = await axios.get(`/profile/${userId}`);
-    console.log(user);
+
     return user;
 };
 
