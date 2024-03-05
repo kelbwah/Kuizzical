@@ -4,7 +4,6 @@ import { pseudoAPICall } from "../utils/DebounceUtils";
 export const getAllQuizzes = async (currPage) => { 
     await pseudoAPICall(500);
     const allQuizzes = await axios.get(`/quiz?page=${currPage}`);
-    console.log(allQuizzes);
 
     return allQuizzes;
 };
