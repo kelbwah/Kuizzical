@@ -1,4 +1,6 @@
-# Kuizzical 
+<h1>Kuizzical <img src="https://github.com/kelbwah/Kuizzical/assets/124933520/d35f61a8-59a4-488c-a0d6-eadb7d6589e1" alt="Kuizzical Logo" style="height:25px; vertical-align:bottom;"></h1> 
+
+## About
 Kuizzical is a free open-source application that allows students to get the grades they deserve. This project emerged after seeing countless other quiz-like applications that 
 just seem to only offer so much at a free cost up until users are forced to pay for "premium" features. 
 
