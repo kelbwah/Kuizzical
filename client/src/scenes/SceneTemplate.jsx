@@ -10,6 +10,8 @@ import ProfileBody from '../components/body-components/ProfileBody.jsx';
 import InfoBody from '../components/body-components/InfoBody';
 import QuizzesPreviewBody from '../components/body-components/QuizzesPreviewBody.jsx';
 import SpecificQuizBody from '../components/body-components/SpecificQuizBody.jsx';
+import CreateQuizBody from '../components/body-components/CreateQuizBody.jsx';
+import Flashcards from '../components/body-components/Flashcards.jsx';
 import Modal from '../components/Modal.jsx';
 import QuizFilter from '../components/QuizFilter.jsx';
 
@@ -21,6 +23,8 @@ const sceneTypes = {
     'Info': <InfoBody />,
     'QuizzesPreview': <QuizzesPreviewBody />,
     'SpecificQuiz': <SpecificQuizBody />,
+    'Flashcards': <Flashcards />,
+    'CreateQuiz': <CreateQuizBody />
 };
 
 const modalTypes = {
@@ -53,7 +57,7 @@ const SceneTemplate = (props) => {
                         } 
                     }
                 /> 
-                <BodyComponent innerDivComponents={ sceneTypes[props.sceneType] } />
+                <BodyComponent isFullyCenter={ props.sceneType === 'SpecificQuiz' ? false : true } innerDivComponents={ sceneTypes[props.sceneType] } />
                 <Footer />
             </div>
         </>

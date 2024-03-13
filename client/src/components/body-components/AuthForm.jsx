@@ -6,7 +6,6 @@ import { Spinner, Tooltip } from 'flowbite-react';
 import { transformAndValidateBody } from '../../utils/ProfileUtils';
 import { setLogin } from '../../states/UserState';
 import { removeError, setError } from '../../states/ErrorState';
-//import { removeSuccess, setSuccess } from '../../states/SuccessState';
 
 const AuthForm = () => { 
     const dispatch = useDispatch();
@@ -49,13 +48,13 @@ const AuthForm = () => {
         try {
             dispatch(removeError()); // Removing any errors states if the user had some previously and didn't close it
             const validatedBody = transformAndValidateBody(e, authBody, isLoginOrRegister);
-            const { user, token } = isLoginOrRegister === 'Register' ? await Register(validatedBody) : await Login(validatedBody);
+            const { data } = isLoginOrRegister === 'Register' ? await Register(validatedBody) : await Login(validatedBody);
             
             setIsLoadingSubmission(false);
             dispatch(
                 setLogin({
-                    user: user,
-                    token: token,
+                    user: data.user,
+                    token: data.token,
                 })
             )
         } catch (err) {  

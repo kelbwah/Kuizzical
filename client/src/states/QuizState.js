@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     allQuizzesBeforeFilter: { quiz: [] },
     allQuizzes: { quiz: [] },
-    specificQuiz: null,
+    specificQuiz: { quiz: {} },
     isQuizLoading: true,
     isFilterApplied: [false, ''],
     currPage: 0,
@@ -39,7 +39,7 @@ export const quizSlice = createSlice({
             state.allQuizzesBeforeFilter = { quiz: [] };
         },
         removeSpecificQuiz: (state) => {
-            state.specificQuiz = null;
+            state.specificQuiz = { quiz: {} };
         },
         revertAllQuizzesFilter: (state) => {
             state.allQuizzes = state.allQuizzesBeforeFilter;

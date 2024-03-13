@@ -8,8 +8,11 @@ export const getAllQuizzes = async (currPage) => {
     return allQuizzes;
 };
 
-export const getQuiz = async () => {
+export const getQuiz = async (quizId) => {
     await pseudoAPICall(500);
+    const quiz = await axios.get(`/quiz/${quizId}`);
+
+    return quiz;
 };
 
 export const createQuiz = async () => {

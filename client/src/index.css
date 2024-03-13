@@ -42,6 +42,10 @@
         animation: fadeOut 1.3s ease-in-out forwards;
     }
 
+    .fade-in-medium { 
+        animation: fadeIn 0.87s ease-in-out backwards;
+    }
+
     .fade-in-fast {
         animation: fadeIn 0.35s ease-in-out forwards;
     }
@@ -57,6 +61,58 @@
     .quiz-preview-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    }
+
+    .flashcard-container {
+        perspective: 1000px;
+        transition: transform 0.4s ease-in-out;
+        transform: scale(.95);
+    }
+
+    .flashcard {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s, background-color 0.4s; 
+        transform-style: preserve-3d;
+        cursor: pointer;
+        padding-left: 16rem; 
+        padding-right: 16rem; 
+        padding-top: 9rem;
+        padding-bottom: 9rem;
+        background-color: rgb(229 231 235);
+        color: rgb(75 85 99);
+        border-radius: 1rem; 
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    }
+
+    .flashcard:hover {
+        background-color: rgb(253 224 71);
+        color: rgb(31 41 55);
+    }
+
+    .flashcard:active {
+        background-color: rgb(250 204 21);
+        color: rgb(17 24 39);
+        transform: scale(.95);
+    }
+
+    .flashcard.is-flipped {
+        transform: rotateX(180deg);
+    }
+
+    .flashcard-front, .flashcard-back {
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        text-align: center; 
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    .flashcard-back {
+        transform: rotateX(180deg);
     }
 }
 

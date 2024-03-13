@@ -4,10 +4,10 @@ import AuthForm from './AuthForm';
 import ProfileForm from './ProfileForm';
 
 const ProfileBody = () => { 
-    const user = useSelector((state) => state.user);  
+    const userToken = useSelector((state) => state.user.token);  
     
     return (
-        (user.token === null ? (
+        (userToken === null ? (
             <AuthForm />
         ) : (
             <ProfileForm />

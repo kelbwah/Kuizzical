@@ -65,23 +65,24 @@ const QuizzesPreviewBody = () => {
                                         <p className='mt-1.5 text-xs text-gray-200 font-bold hover:text-yellow-300 active:text-yellow-400 ease-in-out duration-300 italic'>No filters applied</p>
                                     ) }
                                 </div>
-                                <ButtonWithIcon onClickFunc={ () => openModalDispatch(dispatch, 'Filter') } text='Filter' icon={ <FaFilter className='text-gray-600'/> } />
+                                <ButtonWithIcon onClickFunc={ () => openModalDispatch(dispatch, 'Filter') } text='Filter' icon={ <FaFilter className='text-gray-600' /> } />
                             </div>
                             <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                                 {allQuizzes.map((quiz) => (
                                     <QuizCard 
-                                        id={quiz._id} 
-                                        author={quiz.author} 
-                                        created={formatDate(quiz.createdAt)} 
-                                        title={quiz.title} 
-                                        description={quiz.description}
+                                        id={ quiz._id } 
+                                        author={ quiz.author } 
+                                        created={ formatDate(quiz.createdAt) } 
+                                        title={ quiz.title } 
+                                        description={ quiz.description }
+                                        termsAndDefinitionsLength={ quiz.termsAndDefinitions.length }
                                     />
                                 ))}
                             </div>            
                         </div>
                         <div className='flex w-full gap-8 justify-center items-center mt-2'>
-                            <ButtonWithIcon isDisabled={ isPrevButtonDisabled } onClickFunc={ goPrevPage } text='Previous' icon={ <FaArrowLeft className={ `${isPrevButtonDisabled === false ? 'text-gray-700' : 'text-white'}` } /> } /> 
-                            <ButtonWithIcon isDisabled={ isNextButtonDisabled } onClickFunc={ goNextPage } text='Next' icon={ <FaArrowRight className={ `${isNextButtonDisabled === false ? 'text-gray-700' : 'text-white'}` } /> } /> 
+                            <ButtonWithIcon isDisabled={ isPrevButtonDisabled } onClickFunc={ goPrevPage } text='Previous' icon={ <FaArrowLeft /> } /> 
+                            <ButtonWithIcon isDisabled={ isNextButtonDisabled } onClickFunc={ goNextPage } text='Next' icon={ <FaArrowRight /> } /> 
                         </div>
                     </div>
                 ) : (

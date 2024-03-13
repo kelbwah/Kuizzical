@@ -7,8 +7,6 @@ import CustomToast from '../CustomToast';
 import { setLogout } from '../../states/UserState';
 import { useDispatch } from 'react-redux';
 
-// TODO: First finish up the quiz stuff and then work on this
-// TODO: Need to display any user's made quizzes
 const ProfileForm = () => { 
  
     const dispatch = useDispatch();

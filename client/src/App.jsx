@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import SceneTemplate from './scenes/SceneTemplate.jsx';
 
@@ -35,10 +35,22 @@ function App() {
                         <SceneTemplate documentTitle='Quizzes' sceneType='QuizzesPreview' />       
                     }
                 />
+                <Route 
+                    path='/quiz/create'
+                    element={
+                        <SceneTemplate documentTitle='Create Quiz' sceneType='CreateQuiz' />
+                    }
+                />
                 <Route
                     path='/quiz/:quizId'
                     element={
                         <SceneTemplate documentTitle='Quiz' sceneType='SpecificQuiz' />
+                    }
+                />
+                <Route
+                    path='/quiz/:quizId/flashcards'
+                    element={
+                        <SceneTemplate documentTitle='Flashcards' sceneType='Flashcards' />
                     }
                 />
             </Routes>

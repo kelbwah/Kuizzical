@@ -1,5 +1,5 @@
-import { getAllQuizzes } from '../services/QuizServiceWrapper.js'; 
-import { setAllQuizzes, removeAllQuizzes, setIsQuizLoading, setNextPage, setPrevPage, setIsFilterApplied, setAllQuizzesBeforeFilter, revertAllQuizzesFilter } from '../states/QuizState.js';
+import { getAllQuizzes, getQuiz } from '../services/QuizServiceWrapper.js'; 
+import { setAllQuizzes, removeAllQuizzes, setIsQuizLoading, setNextPage, setPrevPage, setIsFilterApplied, setAllQuizzesBeforeFilter, revertAllQuizzesFilter, removeSpecificQuiz, setSpecificQuiz } from '../states/QuizState.js';
 
 export const fetchAndSetAllQuizzes = async (dispatch, currPage) => {
     dispatch(removeAllQuizzes())
@@ -8,6 +8,15 @@ export const fetchAndSetAllQuizzes = async (dispatch, currPage) => {
     const { data } = await getAllQuizzes(currPage);
     dispatch(setAllQuizzes({ allQuizzes: data }));
     dispatch(setAllQuizzesBeforeFilter({ allQuizzesBeforeFilter: data}));
+    dispatch(setIsQuizLoading({ isQuizLoading: false }));
+};
+
+export const fetchAndSetSpecificQuiz = async (dispatch, quizId) => {
+    dispatch(removeSpecificQuiz());
+    dispatch(setIsQuizLoading({ isQuizLoading: true }))
+
+    const { data } = await getQuiz(quizId);
+    dispatch(setSpecificQuiz({ specificQuiz: data }));
     dispatch(setIsQuizLoading({ isQuizLoading: false }));
 };
 

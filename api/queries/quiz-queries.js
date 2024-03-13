@@ -1,4 +1,5 @@
 const Quiz = require('../models/Quiz.js');
+const mongoose = require('mongoose');
 
 const createQuizQuery = async (body) => {
     const {
@@ -35,8 +36,6 @@ const deleteQuizQuery = async (quizAndUserId) => {
         quizId,
         userId,
     } = quizAndUserId;
-    console.log(quizId);
-    console.log(userId);
 
     try {
         const isUserAuthor = await Quiz.findOne({_id: quizId, author: userId});
@@ -115,10 +114,41 @@ const getAllQuizzesQuery = async (page) => {
 
 const getQuizQuery = async (quizId) => {
     try {
-        const quiz = await Quiz.findById(quizId);
-        if (!quiz) throw new Error('Quiz not found');
+        const quiz = await Quiz.aggregate([
+            { $match: { _id: new mongoose.Types.ObjectId(quizId) } }, // Match the quiz by its ID
+            {
+                $lookup: {
+                    from: "users", // Assuming 'users' is the collection where authors' data is stored
+                    localField: "author",
+                    foreignField: "_id",
+                    as: "authorInfo"
+                }
+            },
+            {
+                $set: {
+                    author: {
+                        $arrayElemAt: ["$authorInfo", 0] // Extract the first element of the authorInfo array
+                    }
+                }
+            },
+            {
+                $project: {
+                    "author.username": 1,
+                    "author._id": 1,
+                    title: 1,
+                    description: 1,
+                    termsAndDefinitions: 1,
+                    visibility: 1,
+                    createdAt: 1,
+                    updatedAt: 1,
+                    __v: 1,
+                }
+            }
+        ]);
 
-        return quiz;
+        if (quiz.length === 0) throw new Error('Quiz not found');
+
+        return quiz[0]; 
     } catch (err) {
         throw err; 
     };

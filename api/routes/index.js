@@ -33,7 +33,7 @@ quizRouter.get('/:quizId', controllers.quiz.getQuiz);
  * quizObject (req.body)
  *
  * */
-quizRouter.post('', controllers.quiz.createQuiz); // TODO: Add in middleware once finished.
+quizRouter.post('', verifyToken, controllers.quiz.createQuiz); // TODO: Add in middleware once finished.
 
 
 /* https://localhost:6969/api/quiz/:quizId?userId=<userId> PATCH 
@@ -43,7 +43,7 @@ quizRouter.post('', controllers.quiz.createQuiz); // TODO: Add in middleware onc
  * {key, new_value} (req.body)
  *
  * */
-quizRouter.patch('/:quizId', controllers.quiz.updateQuiz); // TODO: Add in middleware once finished.
+quizRouter.patch('/:quizId', verifyToken, controllers.quiz.updateQuiz); // TODO: Add in middleware once finished.
 
 
 /* https://localhost:6969/api/quiz/:quizId?userId=<userId>  
@@ -52,7 +52,7 @@ quizRouter.patch('/:quizId', controllers.quiz.updateQuiz); // TODO: Add in middl
  * userId (req.query)
  *
  * */
-quizRouter.delete('/:quizId', controllers.quiz.deleteQuiz); // TODO: Add in middleware once finished. 
+quizRouter.delete('/:quizId', verifyToken, controllers.quiz.deleteQuiz); // TODO: Add in middleware once finished. 
 
 /////////////////////////////////////////////////////////////
 
