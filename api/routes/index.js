@@ -100,7 +100,7 @@ quizRouter.delete('/:quizId', controllers.quiz.deleteQuiz); // TODO: Add in midd
 //s3Router.post('/upload/image', controllers.s3.s3Upload);
 s3Router.post('/upload/image', upload.single('image'), async (req, res) => {
     try{   
-        res.status(201).json(profilePath);
+        res.status(201).json({ imageUrl: profilePath });
     } catch (err) {
         res.status(500).json("Something went wrong while uploading your photo.");
     }
