@@ -105,7 +105,8 @@ quizRouter.delete('/:quizId', controllers.quiz.deleteQuiz); // TODO: Add in midd
 /////////////////////////////////////////////////////////////
 
 /* S3 Upload Routes */
-s3Router.post('/upload/image', upload.array('image', 1), appendS3URLMiddleware, controllers.s3.s3Upload);
+s3Router.post('/upload/image', controllers.s3.s3Upload);
+//s3Router.post('/upload/image', upload.array('image', 1), appendS3URLMiddleware, controllers.s3.s3Upload);
 s3Router.delete('/delete/image', controllers.s3.s3Delete);
 
 /////////////////////////////////////////////////////////////
