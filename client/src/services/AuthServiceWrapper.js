@@ -7,11 +7,14 @@ import { formDataTransform } from '../utils/ProfileUtils.js';
 export const Register = async (body) => {
     const formData = formDataTransform(body);
     await pseudoAPICall(2000);
-    const { data } = await axios.post('/auth/register', formData, {
+
+    const data = await axios.post('/auth/register', formData, {
         headers: {
             'Content-Type': 'application/json'
         }
     });
+
+    console.log(data);
 
     return data;
 };
