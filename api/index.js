@@ -3,8 +3,8 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const routes = require('../routes/index.js');
-const db = require('../db/index.js');
+const routes = require('./routes/index.js');
+const db = require('./db/index.js');
 
 // Initiate .env files
 dotenv.config();
@@ -19,7 +19,8 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
-db.connectToMongoose();
+
+await db.connectToMongoose();
 
 // Routes
 app.use('/api/auth', routes.authRouter);
