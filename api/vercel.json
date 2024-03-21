@@ -7,11 +7,21 @@
         }
     ],
     "rewrites": [
-        { "source": "/(.*)", "destination": "index.js" }
+        { 
+            "source": "/(.*)", 
+            "destination": "index.js",
+            "headers": {
+              "Access-Control-Allow-Credentials": "true",
+              "Access-Control-Allow-Origin": "https://kuizzical.vercel.app",
+              "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
+              "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+            }
+            
+        }
     ],
     "headers": [
         {
-          "source": "/(.*)",
+          "source": "/api/(.*)",
           "headers": [
             { "key": "Access-Control-Allow-Credentials", "value": "true" },
             { "key": "Access-Control-Allow-Origin", "value": "https://kuizzical.vercel.app" },
