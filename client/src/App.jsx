@@ -3,7 +3,7 @@ import axios from 'axios';
 import SceneTemplate from './scenes/SceneTemplate.jsx';
 
 function App() {
-    axios.defaults.baseURL = 'http://localhost:6969/api';
+    axios.defaults.baseURL = 'https://kuizzical-prod-exhru3sgq-kelbwah.vercel.app/api';
     axios.defaults.withCredentials = true;
 
     return (
