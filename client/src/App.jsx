@@ -3,7 +3,7 @@ import axios from 'axios';
 import SceneTemplate from './scenes/SceneTemplate.jsx';
 
 function App() {
-    axios.defaults.baseURL = 'https://kuizzical-prod-exhru3sgq-kelbwah.vercel.app/api';
+    axios.defaults.baseURL = 'https://kuizzical-prod-api.vercel.app/api';
 
     return (
         <BrowserRouter basename='/'>
