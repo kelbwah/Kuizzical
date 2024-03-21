@@ -3,8 +3,14 @@ const mongoose = require('mongoose');
 const termAndDefinitionSchema = new mongoose.Schema({
     term: String,
     definition: String,
-    isTermImage: Boolean,
-    isDefinitionImage: Boolean,
+    termImageInfo: {
+        type: String,
+        default: '',
+    },
+    definitionImageInfo: {
+        type: String,
+        default: '',
+    },
 }, { _id: false });
 
 const QuizSchema = new mongoose.Schema(
@@ -17,13 +23,13 @@ const QuizSchema = new mongoose.Schema(
         title: {
             type: String,
             minLength: 1,
-            maxLength: 50, 
+            maxLength: 75, 
             required: true,
         },
         description: {
             type: String,
             minLength: 1,
-            maxLength: 75, 
+            maxLength: 350, 
             required: true,
         },
         termsAndDefinitions: [termAndDefinitionSchema],

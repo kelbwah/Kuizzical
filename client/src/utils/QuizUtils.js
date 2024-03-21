@@ -1,19 +1,30 @@
-import { getAllQuizzes, getQuiz } from '../services/QuizServiceWrapper.js'; 
-import { setAllQuizzes, removeAllQuizzes, setIsQuizLoading, setNextPage, setPrevPage, setIsFilterApplied, setAllQuizzesBeforeFilter, revertAllQuizzesFilter, removeSpecificQuiz, setSpecificQuiz } from '../states/QuizState.js';
+import { getAllQuizzes, getQuiz } from '../services/QuizServiceWrapper.js';
+import {
+    setAllQuizzes,
+    removeAllQuizzes,
+    setIsQuizLoading,
+    setNextPage,
+    setPrevPage,
+    setIsFilterApplied,
+    setAllQuizzesBeforeFilter,
+    revertAllQuizzesFilter,
+    removeSpecificQuiz,
+    setSpecificQuiz
+} from '../states/QuizState.js';
 
 export const fetchAndSetAllQuizzes = async (dispatch, currPage) => {
-    dispatch(removeAllQuizzes())
-    dispatch(setIsQuizLoading({ isQuizLoading: true }))
+    dispatch(removeAllQuizzes());
+    dispatch(setIsQuizLoading({ isQuizLoading: true }));
 
     const { data } = await getAllQuizzes(currPage);
     dispatch(setAllQuizzes({ allQuizzes: data }));
-    dispatch(setAllQuizzesBeforeFilter({ allQuizzesBeforeFilter: data}));
+    dispatch(setAllQuizzesBeforeFilter({ allQuizzesBeforeFilter: data }));
     dispatch(setIsQuizLoading({ isQuizLoading: false }));
 };
 
 export const fetchAndSetSpecificQuiz = async (dispatch, quizId) => {
+    dispatch(setIsQuizLoading({ isQuizLoading: true }));
     dispatch(removeSpecificQuiz());
-    dispatch(setIsQuizLoading({ isQuizLoading: true }))
 
     const { data } = await getQuiz(quizId);
     dispatch(setSpecificQuiz({ specificQuiz: data }));
@@ -38,6 +49,6 @@ export const prevPage = (dispatch) => {
 };
 
 export const applyFilteredQuizzes = (dispatch, newAllQuizzes, filterType) => {
-    dispatch(setIsFilterApplied({ isFilterApplied: [true, filterType] })); 
+    dispatch(setIsFilterApplied({ isFilterApplied: [true, filterType] }));
     dispatch(setAllQuizzes({ allQuizzes: newAllQuizzes }));
 };

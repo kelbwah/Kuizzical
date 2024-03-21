@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     allQuizzesBeforeFilter: { quiz: [] },
@@ -6,18 +6,19 @@ const initialState = {
     specificQuiz: { quiz: {} },
     isQuizLoading: true,
     isFilterApplied: [false, ''],
-    currPage: 0,
+    currPage: 0
 };
 
 export const quizSlice = createSlice({
-    name: "quizSlice",
+    name: 'quizSlice',
     initialState,
     reducers: {
         setAllQuizzes: (state, action) => {
             state.allQuizzes = action.payload.allQuizzes;
         },
         setAllQuizzesBeforeFilter: (state, action) => {
-            state.allQuizzesBeforeFilter = action.payload.allQuizzesBeforeFilter;
+            state.allQuizzesBeforeFilter =
+                action.payload.allQuizzesBeforeFilter;
         },
         setSpecificQuiz: (state, action) => {
             state.specificQuiz = action.payload.specificQuiz;
@@ -43,21 +44,21 @@ export const quizSlice = createSlice({
         },
         revertAllQuizzesFilter: (state) => {
             state.allQuizzes = state.allQuizzesBeforeFilter;
-        },
-    },
+        }
+    }
 });
 
 export const {
-    setAllQuizzes, 
+    setAllQuizzes,
     setAllQuizzesBeforeFilter,
-    setSpecificQuiz, 
-    setIsQuizLoading, 
+    setSpecificQuiz,
+    setIsQuizLoading,
     setNextPage,
     setPrevPage,
     setIsFilterApplied,
-    removeSpecificQuiz, 
+    removeSpecificQuiz,
     removeAllQuizzes,
-    revertAllQuizzesFilter,
+    revertAllQuizzesFilter
 } = quizSlice.actions;
 
 export default quizSlice.reducer;

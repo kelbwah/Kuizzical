@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    success: null,
+    success: null
 };
 
 export const successSlice = createSlice({
-    name: "successSlice",
+    name: 'successSlice',
     initialState,
     reducers: {
         setSuccess: (state, action) => {
@@ -14,9 +14,9 @@ export const successSlice = createSlice({
         removeSuccess: (state) => {
             state.success = null;
         }
-    },
+    }
 });
 
-export const {setSuccess, removeSuccess} = successSlice.actions;
+export const { setSuccess, removeSuccess } = successSlice.actions;
 
 export default successSlice.reducer;

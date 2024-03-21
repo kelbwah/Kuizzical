@@ -1,23 +1,21 @@
-import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Toast } from 'flowbite-react';
 import { useDispatch } from 'react-redux';
 import { removeError } from '../states/ErrorState';
 
 const CustomToast = (props) => {
-
     const dispatch = useDispatch();
     const removeErrorState = () => {
-        dispatch(removeError())
-    }; 
+        dispatch(removeError());
+    };
 
     return (
         <div className={`fixed z-50 fade-in-fast`}>
             <Toast className='flex w-full gap-1.5'>
                 {props.icon}
-                <div className={props.messageStyle}>{props.message}</div> 
+                <div className={props.messageStyle}>{props.message}</div>
                 {props.type === 'error_toast' ? (
-                    <Toast.Toggle onDismiss={() => removeErrorState()}/>
+                    <Toast.Toggle onDismiss={() => removeErrorState()} />
                 ) : (
                     <Toast.Toggle />
                 )}
@@ -26,11 +24,10 @@ const CustomToast = (props) => {
     );
 };
 
-
 CustomToast.defaultProps = {
     message: null,
     icon: null,
-    position: null,
+    position: null
 };
 
 CustomToast.propTypes = {
@@ -39,10 +36,7 @@ CustomToast.propTypes = {
     messageStyle: PropTypes.string,
     icon: PropTypes.node,
     position: PropTypes.string,
-    onClickFunction: PropTypes.func,
+    onClickFunction: PropTypes.func
 };
 
 export default CustomToast;
-
-
-

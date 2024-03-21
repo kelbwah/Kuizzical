@@ -2,7 +2,6 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import SceneTemplate from './scenes/SceneTemplate.jsx';
 
-
 function App() {
     axios.defaults.baseURL = 'http://localhost:6969/api';
     axios.defaults.withCredentials = true;
@@ -10,20 +9,26 @@ function App() {
     return (
         <BrowserRouter basename='/'>
             <Routes>
-                <Route 
+                <Route
                     exact
-                    path='/' 
+                    path='/'
                     element={
-                        <SceneTemplate documentTitle='Home' sceneType='Landing' />
+                        <SceneTemplate
+                            documentTitle='Home'
+                            sceneType='Landing'
+                        />
                     }
                 />
-                <Route 
-                    path='/profile' 
+                <Route
+                    path='/profile'
                     element={
-                        <SceneTemplate documentTitle='Profile' sceneType='Profile' />
+                        <SceneTemplate
+                            documentTitle='Profile'
+                            sceneType='Profile'
+                        />
                     }
                 />
-                <Route 
+                <Route
                     path='/info'
                     element={
                         <SceneTemplate documentTitle='Info' sceneType='Info' />
@@ -32,30 +37,42 @@ function App() {
                 <Route
                     path='/quizzes'
                     element={
-                        <SceneTemplate documentTitle='Quizzes' sceneType='QuizzesPreview' />       
+                        <SceneTemplate
+                            documentTitle='Quizzes'
+                            sceneType='QuizzesPreview'
+                        />
                     }
                 />
-                <Route 
+                <Route
                     path='/quiz/create'
                     element={
-                        <SceneTemplate documentTitle='Create Quiz' sceneType='CreateQuiz' />
+                        <SceneTemplate
+                            documentTitle='Create Quiz'
+                            sceneType='CreateQuiz'
+                        />
                     }
                 />
                 <Route
                     path='/quiz/:quizId'
                     element={
-                        <SceneTemplate documentTitle='Quiz' sceneType='SpecificQuiz' />
+                        <SceneTemplate
+                            documentTitle='Quiz'
+                            sceneType='SpecificQuiz'
+                        />
                     }
                 />
                 <Route
                     path='/quiz/:quizId/flashcards'
                     element={
-                        <SceneTemplate documentTitle='Flashcards' sceneType='Flashcards' />
+                        <SceneTemplate
+                            documentTitle='Flashcards'
+                            sceneType='Flashcards'
+                        />
                     }
                 />
             </Routes>
         </BrowserRouter>
-    )
+    );
 }
 
 export default App;

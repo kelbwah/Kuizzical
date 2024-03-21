@@ -7,10 +7,9 @@ import CustomToast from '../CustomToast';
 import { setLogout } from '../../states/UserState';
 import { useDispatch } from 'react-redux';
 
-const ProfileForm = () => { 
- 
+const ProfileForm = () => {
     const dispatch = useDispatch();
-    
+
     const Logout = () => {
         dispatch(setLogout());
     };
@@ -20,7 +19,6 @@ const ProfileForm = () => {
             <form className='fade-in-fast'>Profile Form</form>
             <button onClick={() => Logout()}>Log Out</button>
         </>
-        
     );
 };
 

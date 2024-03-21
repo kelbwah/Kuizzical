@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { useDispatch } from "react-redux";
-import { pseudoAPICall } from "../utils/DebounceUtils";
+import { useDispatch } from 'react-redux';
+import { pseudoAPICall } from '../utils/DebounceUtils';
 
 export const getUserById = async (userId) => {
     await pseudoAPICall(500);
@@ -8,4 +8,3 @@ export const getUserById = async (userId) => {
 
     return user;
 };
-

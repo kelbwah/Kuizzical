@@ -115,10 +115,10 @@ const getAllQuizzesQuery = async (page) => {
 const getQuizQuery = async (quizId) => {
     try {
         const quiz = await Quiz.aggregate([
-            { $match: { _id: new mongoose.Types.ObjectId(quizId) } }, // Match the quiz by its ID
+            { $match: { _id: new mongoose.Types.ObjectId(quizId) } }, 
             {
                 $lookup: {
-                    from: "users", // Assuming 'users' is the collection where authors' data is stored
+                    from: "users", 
                     localField: "author",
                     foreignField: "_id",
                     as: "authorInfo"
@@ -127,7 +127,7 @@ const getQuizQuery = async (quizId) => {
             {
                 $set: {
                     author: {
-                        $arrayElemAt: ["$authorInfo", 0] // Extract the first element of the authorInfo array
+                        $arrayElemAt: ["$authorInfo", 0] 
                     }
                 }
             },

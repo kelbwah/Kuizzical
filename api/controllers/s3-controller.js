@@ -2,11 +2,9 @@ const logic = require('../logic');
 
 const s3Upload = async (req, res) => { // Uploading specific s3 object
     try {
-        const logicResult = await logic.s3.s3UploadLogic(req.body);
-
-        return res.status(200).json({ result: logicResult }); 
+        return res.status(200).json({ imageUrl: req.body.imageUrl }); 
     } catch (err) {
-        return res.status(500).json({ errror: err.message });
+        return res.status(500).json({ error: err.message });
     };
 };
 
