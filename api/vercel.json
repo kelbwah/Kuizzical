@@ -14,7 +14,7 @@
     ],
     "headers": [
         { 
-            "key": "Access-Control-Allow-Origin", 
+            "name": "Access-Control-Allow-Origin", 
             "value": "https://kuizzical.vercel.app" 
         }
     ]
