@@ -63,7 +63,7 @@ authRouter.post('/login', controllers.auth.login);
 
 /* Quiz Routes */
 
-/* https://localhost:6969/api/quiz?currPage=<currPage> GET */
+/* https://localhost:6969/api/quiz?page=<currPage> GET */
 quizRouter.get('', controllers.quiz.getAllQuizzes); 
 
 
