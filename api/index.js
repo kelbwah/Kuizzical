@@ -26,5 +26,7 @@ app.use('/api/profile', routes.profileRouter);
 app.use('/api/s3', routes.s3Router);
 //app.use('/game', gameRoutes);
 
-// Starting the server at given port
-app.listen(process.env.API_PORT, () => console.log(`Server started at port ${process.env.API_PORT}`));
+// Starting the server at given port (LOCAL ENVIRONMENT)
+// app.listen(process.env.API_PORT, () => console.log(`Server started at port ${process.env.API_PORT}`));
+
+module.exports = app;

@@ -91,7 +91,7 @@ quizRouter.post('', controllers.quiz.createQuiz); // TODO: Add in middleware onc
  * {key, new_value} (req.body)
  *
  * */
-quizRouter.patch('/:quizId', verifyToken, controllers.quiz.updateQuiz); // TODO: Add in middleware once finished.
+quizRouter.patch('/:quizId', controllers.quiz.updateQuiz); // TODO: Add in middleware once finished.
 
 
 /* https://localhost:6969/api/quiz/:quizId?userId=<userId>  
@@ -100,7 +100,7 @@ quizRouter.patch('/:quizId', verifyToken, controllers.quiz.updateQuiz); // TODO:
  * userId (req.query)
  *
  * */
-quizRouter.delete('/:quizId', verifyToken, controllers.quiz.deleteQuiz); // TODO: Add in middleware once finished. 
+quizRouter.delete('/:quizId', controllers.quiz.deleteQuiz); // TODO: Add in middleware once finished. 
 
 /////////////////////////////////////////////////////////////
 
@@ -112,8 +112,8 @@ s3Router.delete('/delete/image', controllers.s3.s3Delete);
 
 /* Profile Routes */
 profileRouter.get('/:userId', controllers.profile.getUser);
-profileRouter.patch('/:userId', verifyToken, controllers.profile.updateUser);
-profileRouter.delete('/:userId', verifyToken, controllers.profile.deleteUser);
+profileRouter.patch('/:userId', controllers.profile.updateUser);
+profileRouter.delete('/:userId', controllers.profile.deleteUser);
 
 module.exports = {
     authRouter,
