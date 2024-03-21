@@ -3,8 +3,8 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const routes = require('./routes/index.js');
-const db = require('./db/index.js');
+const routes = require('../routes/index.js');
+const db = require('../db/index.js');
 
 // Initiate .env files
 dotenv.config();
