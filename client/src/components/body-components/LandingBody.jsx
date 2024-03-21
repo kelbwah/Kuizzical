@@ -5,11 +5,11 @@ const LandingBody = () => {
                 Let's get started
             </p>
             <p className='text-center lg:text-sm md:text-sm text-xs mb-2'>
-                Press the quiz button above to
+                Press the quiz button above to{' '}
                 <span className='text-yellow-300'>search</span> through quizzes
             </p>
             <p className='text-center lg:text-sm md:text-sm text-xs'>
-                Or press the profile button to start
+                Or press the profile button to start{' '}
                 <span className='text-yellow-300'>creating</span> quizzes
             </p>
         </div>

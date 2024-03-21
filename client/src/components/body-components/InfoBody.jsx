@@ -9,10 +9,10 @@ const InfoBody = () => {
                         What is Kuizzical?
                     </h1>
                     <p className='lg:text-sm md:text-sm text-xs font-medium'>
-                        Kuizzical was made for
+                        Kuizzical was made for{' '}
                         <span className='text-yellow-300'>simplicity</span> and
                         for you to get the grades you deserve. You are able to
-                        study however
+                        study however{' '}
                         <span className='text-yellow-300'>you</span> like.
                         Whether it be fun games we generate for you or
                         flashcards, we have it all. Kuizzical was meant to
@@ -59,7 +59,7 @@ const InfoBody = () => {
                         </p>
                         <p className='text-xs'>
                             Kuizzical is open source and it's source code is
-                            found in
+                            found in{' '}
                             <a
                                 className='text-yellow-300 underline'
                                 href='https://github.com/kelbwah/Kuizzical.git'
