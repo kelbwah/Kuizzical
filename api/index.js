@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
-await db.connectToMongoose();
+db.connectToMongoose();
 
 // Routes
 app.use('/api/auth', routes.authRouter);
