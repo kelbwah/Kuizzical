@@ -88,17 +88,8 @@ const Flashcards = () => {
                             />
                             {!isFlipped ? (
                                 <CSSTransition>
-                                    <div className='flex gap-8'>
-                                        {termsAndDefinitions &&
-                                            termsAndDefinitions[
-                                                currFlashcardIndex
-                                            ] &&
-                                            termsAndDefinitions[
-                                                currFlashcardIndex
-                                            ]['termImageInfo'] &&
-                                            termsAndDefinitions[
-                                                currFlashcardIndex
-                                            ]['termImageInfo'].length > 0 && (
+                                    <div className='flex gap-8 items-center justify-center p-8'>
+                                        {termsAndDefinitions && termsAndDefinitions[currFlashcardIndex] && termsAndDefinitions[currFlashcardIndex]['termImageInfo'] && termsAndDefinitions[currFlashcardIndex]['termImageInfo'].length > 0 && (
                                                 <img
                                                     src={
                                                         termsAndDefinitions[
@@ -107,18 +98,14 @@ const Flashcards = () => {
                                                     }
                                                     className='lg:h-4/5 md:h-4/5 h-5/6 lg:w-3/5 md:w-3/5 w-5/6 fade-in-medium'
                                                 />
-                                            )}
+                                        )}
                                         <p className='fade-in-medium'>
-                                            {
-                                                termsAndDefinitions[
-                                                    currFlashcardIndex
-                                                ]['term']
-                                            }
+                                            { termsAndDefinitions[currFlashcardIndex]['term'] }
                                         </p>
                                     </div>
                                 </CSSTransition>
                             ) : (
-                                <div className='flex gap-8'>
+                                <div className='flex gap-8 items-center justify-center p-8'>
                                     {termsAndDefinitions &&
                                         termsAndDefinitions[
                                             currFlashcardIndex
