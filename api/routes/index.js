@@ -99,7 +99,7 @@ quizRouter.delete('/:quizId', controllers.quiz.deleteQuiz); // TODO: Add in midd
 /* S3 Upload Routes */
 s3Router.post('/upload/image', upload.single('image'), async (req, res) => {
     try{   
-        res.status(201).json({ imageUrl: profilePath });
+        res.status(201).json({ imageUrl: imagePath });
     } catch (err) {
 
         res.status(500).json({ error: err.message });
