@@ -17,7 +17,7 @@ dotenv.config();
 /////////////////////////////////////////////////////////////
 
 /* For s3 image uploads */
-let imagePath = null; 
+var imagePath; 
 const S3AccessKey = process.env.S3_ACCESS_KEY;
 const S3SecretAccessKey = process.env.S3_SECRET_ACCESS_KEY;
 const S3BucketName = process.env.S3_BUCKET_NAME;
@@ -44,14 +44,6 @@ const upload = multer({
         },
     }),
 });
-
-const appendS3URLMiddleware = (req, res, next) => {
-    if (imagePath !== null) {
-        req.body.imageUrl = imagePath;
-    };
-
-    next();
-};
 
 /////////////////////////////////////////////////////////////
 
@@ -105,7 +97,14 @@ quizRouter.delete('/:quizId', controllers.quiz.deleteQuiz); // TODO: Add in midd
 /////////////////////////////////////////////////////////////
 
 /* S3 Upload Routes */
-s3Router.post('/upload/image', controllers.s3.s3Upload);
+//s3Router.post('/upload/image', controllers.s3.s3Upload);
+s3Router.post('/upload/image', upload.single('image'), async (req, res) => {
+    try{   
+        res.status(201).json(profilePath);
+    } catch (err) {
+        res.status(500).json("Something went wrong while uploading your photo.");
+    }
+})
 //s3Router.post('/upload/image', upload.array('image', 1), appendS3URLMiddleware, controllers.s3.s3Upload);
 s3Router.delete('/delete/image', controllers.s3.s3Delete);
 
