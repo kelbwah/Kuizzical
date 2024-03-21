@@ -14,7 +14,7 @@ const app = express();
 // Setting up some CORS and JSON stuff for express
 app.use(cors({
     credentials: true,
-    origin: process.env.VITE_CLIENT_BASE_URL,
+    origin: "https://kuizzical.vercel.app",
 }));
 app.use(express.json());
 app.use(cookieParser());
