@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User.js');
+const objectCreationErrorGenerator = require('../errors/query-errors.js');
 
 const registerAuthQuery = async (body) => {
     const {
@@ -29,7 +30,11 @@ const registerAuthQuery = async (body) => {
 
         return savedUser;
     } catch (err) {
-        throw err;
+        if (err.code) {
+            throw objectCreationErrorGenerator(err.code, (err.keyValue !== null || err.keyValue !== undefined ? err.keyValue : null));
+        } else {
+            throw err;
+        };
     };
 };
 
@@ -56,7 +61,11 @@ const loginAuthQuery = async (body) => {
 
         return foundUser;
     } catch (err) {
-        throw err;
+        if (err.code) {
+            throw objectCreationErrorGenerator(err.code, (err.keyValue !== null || err.keyValue !== undefined ? err.keyValue : null));
+        } else {
+            throw err;
+        };
     };
 };
 

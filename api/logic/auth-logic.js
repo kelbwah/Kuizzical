@@ -4,9 +4,9 @@ const queries = require('../queries');
 
 const logicToQueryCall = async (registerOrLogin, body) => {
     try {
-        await db.connectToMongoose(); // Connect to mongoose 
+        await db.connectToMongoose(); 
     } catch (err) {
-        return err; 
+        throw err; 
     };
 
     if (registerOrLogin === 'register') {

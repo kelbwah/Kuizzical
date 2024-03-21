@@ -1,16 +1,14 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const connectToMongoose = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URL); 
-    } catch (err) {
-        throw err;
-    };
-};
-
-const disconnectFromMongoose = async () => {
-    try {
-        await mongoose.connection.close();
+        await mongoose.connect(process.env.MONGO_URL, {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+        });
     } catch (err) {
         throw err;
     };
@@ -18,5 +16,4 @@ const disconnectFromMongoose = async () => {
 
 module.exports = {
     connectToMongoose,
-    disconnectFromMongoose,
 };
