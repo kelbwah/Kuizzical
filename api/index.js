@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 
 // Setting up some CORS and JSON stuff for express
-app.use(cors());
+app.use(cors({ origin: 'https://kuizzical.vercel.app' }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
