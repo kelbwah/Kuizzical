@@ -14,8 +14,6 @@ export const Register = async (body) => {
         }
     });
 
-    console.log(data);
-
     return data;
 };
 
