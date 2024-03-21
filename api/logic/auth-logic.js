@@ -1,10 +1,8 @@
 const bcrypt = require('bcrypt');
-const db = require('../db');
 const queries = require('../queries');
 
 const logicToQueryCall = async (registerOrLogin, body) => {
     try {
-        await db.connectToMongoose(); 
     } catch (err) {
         throw err; 
     };

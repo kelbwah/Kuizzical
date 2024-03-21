@@ -4,6 +4,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const routes = require('./routes/index.js');
+const db = require('./db/index.js');
 
 // Initiate .env files
 dotenv.config();
@@ -24,6 +25,9 @@ app.use('/api/auth', routes.authRouter);
 app.use('/api/quiz', routes.quizRouter);
 app.use('/api/profile', routes.profileRouter);
 app.use('/api/s3', routes.s3Router);
+
+await db.connectToMongoose();
+
 //app.use('/game', gameRoutes);
 
 // Starting the server at given port (LOCAL ENVIRONMENT)

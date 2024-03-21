@@ -3,7 +3,6 @@ const queries = require('../queries');
 
 const createQuizLogic = async (body) => {
     try {
-        await db.connectToMongoose(); 
         const queryResult = await queries.quiz.createQuizQuery(body);
 
         return queryResult;
@@ -14,8 +13,6 @@ const createQuizLogic = async (body) => {
 
 const deleteQuizLogic = async (req) => { 
     try {
-        await db.connectToMongoose();
-        
         const { userId } = req.query;
         const { quizId } = req.params;
 
@@ -29,8 +26,6 @@ const deleteQuizLogic = async (req) => {
 
 const updateQuizLogic = async (req) => {
     try {
-        await db.connectToMongoose(); 
-
         const { quizId } = req.params;
         const { userId } = req.query;
 
@@ -50,7 +45,6 @@ const updateQuizLogic = async (req) => {
 
 const getAllQuizzesLogic = async (page) => {
     try {
-        await db.connectToMongoose(); 
         const queryResult = await queries.quiz.getAllQuizzesQuery(page);
 
         return queryResult; 
@@ -61,7 +55,6 @@ const getAllQuizzesLogic = async (page) => {
 
 const getQuizLogic = async (quizId) => {
     try {
-        await db.connectToMongoose(); 
         const queryResult = await queries.quiz.getQuizQuery(quizId);
 
         return queryResult; 
