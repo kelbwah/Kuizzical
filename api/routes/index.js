@@ -17,7 +17,6 @@ dotenv.config();
 /////////////////////////////////////////////////////////////
 
 /* For s3 image uploads */
-var imagePath; 
 const S3AccessKey = process.env.S3_ACCESS_KEY;
 const S3SecretAccessKey = process.env.S3_SECRET_ACCESS_KEY;
 const S3BucketName = process.env.S3_BUCKET_NAME;
@@ -29,6 +28,7 @@ const s3 = new S3Client({
     },
 });
 
+var imagePath; 
 const upload = multer({
     storage: multerS3({
         s3: s3,
@@ -97,7 +97,6 @@ quizRouter.delete('/:quizId', controllers.quiz.deleteQuiz); // TODO: Add in midd
 /////////////////////////////////////////////////////////////
 
 /* S3 Upload Routes */
-//s3Router.post('/upload/image', controllers.s3.s3Upload);
 s3Router.post('/upload/image', upload.single('image'), async (req, res) => {
     try{   
         res.status(201).json({ imageUrl: profilePath });
