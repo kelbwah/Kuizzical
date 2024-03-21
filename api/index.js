@@ -19,6 +19,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
+db.connectToMongoose();
 
 // Routes
 app.use('/api/auth', routes.authRouter);
@@ -26,7 +27,6 @@ app.use('/api/quiz', routes.quizRouter);
 app.use('/api/profile', routes.profileRouter);
 app.use('/api/s3', routes.s3Router);
 
-await db.connectToMongoose();
 
 //app.use('/game', gameRoutes);
 
