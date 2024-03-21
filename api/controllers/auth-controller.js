@@ -9,8 +9,6 @@ const register = async (req, res) => {
     try {
         const logicResult = await logic.auth.registerLogic(req.body); 
 
-        await db.disconnectFromMongoose();
-
         jwt.sign({ userId: logicResult._id, username: logicResult.username}, process.env.JWT_SECRET, {}, (err, token) => {
             if (err) throw err;
             return res.cookie('token', token, { sameSite: 'none', secure: true }).json({
@@ -26,8 +24,6 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     try {
         const logicResult = await logic.auth.loginLogic(req.body); 
-
-        await db.disconnectFromMongoose();
 
         jwt.sign({ userId: logicResult._id, username: logicResult.username}, process.env.JWT_SECRET, {}, (err, token) => {
             if (err) throw err;

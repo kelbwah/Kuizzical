@@ -38,7 +38,7 @@ const QuizzesPreviewBody = () => {
 
     useEffect(() => {
         fetchAndSetAllQuizzes(dispatch, currPage);
-    }, []);
+    }, [dispatch, currPage]);
 
     return (
         <CSSTransition

@@ -8,8 +8,6 @@ const createQuiz = async (req, res) => {
     try {
         const logicResult = await logic.quiz.createQuizLogic(req.body); 
 
-        await db.disconnectFromMongoose();
-
         return res.status(201).json({ quiz: logicResult });
     } catch (err) {
         return res.status(500).json({ error: err.message });
@@ -19,8 +17,6 @@ const createQuiz = async (req, res) => {
 const deleteQuiz = async (req, res) => {
     try {
         const logicResult = await logic.quiz.deleteQuizLogic(req); 
-
-        await db.disconnectFromMongoose();
 
         return res.status(200).json({ result: logicResult });
     } catch (err) {
@@ -33,8 +29,6 @@ const updateQuiz = async (req, res) => {
     try {
         const logicResult = await logic.quiz.updateQuizLogic(req); 
 
-        await db.disconnectFromMongoose();
-
         return res.status(200).json({ quiz: logicResult });
     } catch (err) {
         return res.status(500).json({ error: err.message });
@@ -46,8 +40,6 @@ const getAllQuizzes = async (req, res) => {
         const { page } = req.query;
         const logicResult = await logic.quiz.getAllQuizzesLogic(page); 
 
-        await db.disconnectFromMongoose();
-
         return res.status(200).json({ quiz: logicResult });
     } catch (err) {
         return res.status(500).json({ error: err.message });
@@ -58,8 +50,6 @@ const getQuiz = async (req, res) => {
     try {
         const { quizId } = req.params;
         const logicResult = await logic.quiz.getQuizLogic(quizId); 
-
-        await db.disconnectFromMongoose();
 
         return res.status(200).json({ quiz: logicResult });
     } catch (err) {

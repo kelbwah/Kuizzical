@@ -6,8 +6,6 @@ const getUser = async (req, res) => {
         const { userId } = req.params;
         const logicResult = await logic.profile.getUserLogic(userId); 
         
-        await db.disconnectFromMongoose();
-
         return res.status(200).json({ user: logicResult });
     } catch (err) {
         return res.status(500).json({ err: err.message });

@@ -45,7 +45,7 @@ const Flashcards = () => {
 
     useEffect(() => {
         fetchAndSetSpecificQuiz(dispatch, quizId);
-    }, []);
+    }, [dispatch, quizId]);
 
     useEffect(() => {}, [quiz]);
 
