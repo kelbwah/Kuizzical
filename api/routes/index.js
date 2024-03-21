@@ -101,7 +101,8 @@ s3Router.post('/upload/image', upload.single('image'), async (req, res) => {
     try{   
         res.status(201).json({ imageUrl: profilePath });
     } catch (err) {
-        res.status(500).json("Something went wrong while uploading your photo.");
+
+        res.status(500).json({ error: err.message });
     }
 })
 //s3Router.post('/upload/image', upload.array('image', 1), appendS3URLMiddleware, controllers.s3.s3Upload);
